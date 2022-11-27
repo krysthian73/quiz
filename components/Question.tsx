@@ -11,14 +11,17 @@ export default function Question(props: QuestionProps) {
   const { model } = props;
   const question = model;
 
+  const letters = ["A", "B", "C", "D"];
+
   const renderAnswers = () => {
     return question.answers.map((arrayAnswer, i) => {
       return (
         <Answer
+          key={i}
           model={arrayAnswer}
           index={i}
-          letter="A"
-          letterColor="#00c853"
+          letter={letters[i]}
+          backgroundColor="#00c853"
         />
       );
     });

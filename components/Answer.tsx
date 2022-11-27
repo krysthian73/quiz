@@ -5,18 +5,23 @@ interface AnswerProps {
   model: AnswerModel;
   index: number;
   letter: string;
-  letterColor: string;
+  backgroundColor: string;
 }
 
 export default function Answer(props: AnswerProps) {
-  const { model, index, letter, letterColor } = props;
+  const { model, index, letter, backgroundColor } = props;
   const value = model.value;
   return (
     <div className={styles.answer}>
       <div className={styles.answerContent}>
         <div className={styles.answerFront}>
-          <div className={styles.answerLetter}>{letter}</div>
-          <div className={styles.answerLetter}>{value}</div>
+          <div
+            style={{ backgroundColor: backgroundColor }}
+            className={styles.answerLetter}
+          >
+            {letter}
+          </div>
+          <div className={styles.answerValue}>{value}</div>
         </div>
         <div className={styles.answerBack}></div>
       </div>
