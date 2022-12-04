@@ -5,10 +5,11 @@ import Answer from "./Answer";
 
 interface QuestionProps {
   model: QuestionModel;
+  onResponse: (index: number) => void;
 }
 
 export default function Question(props: QuestionProps) {
-  const { model } = props;
+  const { model, onResponse } = props;
   const question = model;
 
   const letters = ["A", "B", "C", "D"];
@@ -22,6 +23,7 @@ export default function Question(props: QuestionProps) {
           index={i}
           letter={letters[i]}
           backgroundColor="#00c853"
+          onResponse={onResponse}
         />
       );
     });
