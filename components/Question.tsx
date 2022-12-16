@@ -2,14 +2,16 @@ import styles from "../styles/Question.module.css";
 import QuestionModel from "../model/question";
 import Statement from "./Statement";
 import Answer from "./Answer";
+import Timer from "./Timer";
 
 interface QuestionProps {
   model: QuestionModel;
   onResponse: (index: number) => void;
+  timerOut: () => void;
 }
 
 export default function Question(props: QuestionProps) {
-  const { model, onResponse } = props;
+  const { model, onResponse, timerOut } = props;
   const question = model;
 
   const letters = ["A", "B", "C", "D"];
@@ -32,6 +34,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <Statement text={question.statement} />
+      <Timer duration={10} timerOut={timerOut} />
       {renderAnswers()}
     </div>
   );

@@ -15,6 +15,10 @@ export default function Home() {
 
   const onResponse = (index: number) => setQuestion(question.answering(index));
 
+  const timerOut = () => {
+    if (question.notAnswered) setQuestion(question.answering(-1));
+  };
+
   return (
     <div
       style={{
@@ -24,7 +28,7 @@ export default function Home() {
         height: "100vh",
       }}
     >
-      <Question model={question} onResponse={onResponse} />
+      <Question model={question} onResponse={onResponse} timerOut={timerOut} />
     </div>
   );
 }
