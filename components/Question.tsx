@@ -6,12 +6,13 @@ import Timer from "./Timer";
 
 interface QuestionProps {
   model: QuestionModel;
+  timeToAnswer?: number;
   onResponse: (index: number) => void;
   timerOut: () => void;
 }
 
 export default function Question(props: QuestionProps) {
-  const { model, onResponse, timerOut } = props;
+  const { model, timeToAnswer, onResponse, timerOut } = props;
   const question = model;
 
   const letters = ["A", "B", "C", "D"];
@@ -34,7 +35,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <Statement text={question.statement} />
-      <Timer duration={10} timerOut={timerOut} />
+      <Timer duration={timeToAnswer || 10} timerOut={timerOut} />
       {renderAnswers()}
     </div>
   );

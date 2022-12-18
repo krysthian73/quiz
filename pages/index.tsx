@@ -28,7 +28,12 @@ export default function Home() {
         height: "100vh",
       }}
     >
-      <Question model={question} onResponse={onResponse} timerOut={timerOut} />
+      <Question
+        model={question}
+        onResponse={onResponse}
+        timeToAnswer={5}
+        timerOut={timerOut}
+      />
     </div>
   );
 }
